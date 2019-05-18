@@ -1,13 +1,10 @@
-<div
-  class="main welcome"
+<section
+  class="main"
   *ngIf="currentStep === APP_STEPS.WELCOME"
 >
   <h1>Start</h1>
-  <div class="quiz-selection">
-    <div
-      class="quiz-selection__button"
-      *ngFor="let quiz of quizzes"
-    >
+  <div class="selection">
+    <div *ngFor="let quiz of quizzes">
       <button
         class="button selection-button"
         (click)="startQuiz(quiz)"
@@ -16,39 +13,53 @@
       </button>
     </div>
   </div>
-</div>
+</section>
 
-<div
+<section
   class="main quiz"
   *ngIf="currentStep === APP_STEPS.QUIZ_ACTIVE"
 >
+  <h2 class="score">Score: {{ score }}/{{ activeQuiz.questions.length }}</h2>
+
   <ng-container *ngFor="let question of activeQuiz.questions; let i = index">
     <div
       class="quiz-question"
       [hidden]="currentQuestion !== i"
     >
-      <h1>{{ question.question }}</h1>
+      <h2>{{ question.question }}</h2>
 
-      <div class="quiz-question__answers">
-        <div
-          class="quiz-question__answers-button"
-          *ngFor="let answer of question.answers; let j = index"
-        >
-          <button
-            class="button selection-button"
-            (click)="submitAnswer(question, j)"
-          >
-            {{ answer.content }}
-          </button>
+      <div class="selection">
+        <div class="selection-column">
+          <ng-container *ngFor="let answer of question.answers; let j = index">
+            <button
+              *ngIf="j % 2 === 0"
+              class="button selection-button"
+              (click)="submitAnswer(question, j)"
+            >
+              {{ answer.content }}
+            </button>
+          </ng-container>
+        </div>
+        <div class="selection-column">
+          <ng-container *ngFor="let answer of question.answers; let j = index">
+            <button
+              *ngIf="j % 2 === 1"
+              class="button selection-button"
+              (click)="submitAnswer(question, j)"
+            >
+              {{ answer.content }}
+            </button>
+          </ng-container>
         </div>
       </div>
+
     </div>
   </ng-container>
-</div>
+</section>
 
-<div
+<section
   class="main result"
   *ngIf="currentStep === APP_STEPS.SHOW_SCORE"
 >
   <h1>Score</h1>
-</div>
+</section>

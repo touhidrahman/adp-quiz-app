@@ -14,18 +14,20 @@ enum APP_STEPS {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  APP_STEPS = APP_STEPS;
+
   title = 'ADP Quiz App';
   QUESTION_CHANGE_DELAY = 0; // ms
 
-  APP_STEPS = APP_STEPS;
-
-  quizStarted = false;
-  showResult = false;
   currentQuestion = 0;
   currentStep = APP_STEPS.WELCOME;
   activeQuiz: Quiz;
   quizzes: Array<Quiz>;
   result: Array<{ question: Question, wasCorrect: boolean }> = [];
+
+  get score(): number {
+    return this.result.filter(it => !!it.wasCorrect).length
+  }
 
   constructor(private quizService: QuizService) { }
 
