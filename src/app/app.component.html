@@ -34,6 +34,10 @@
             <button
               *ngIf="j % 2 === 0"
               class="button selection-button"
+              [ngClass]="{
+                'warn': currentSelectedAnswer === j && currentCorrectAnswer !== currentSelectedAnswer,
+                'success': currentCorrectAnswer === j
+              }"
               (click)="submitAnswer(question, j)"
             >
               {{ answer.content }}
@@ -45,6 +49,10 @@
             <button
               *ngIf="j % 2 === 1"
               class="button selection-button"
+              [ngClass]="{
+                'warn': currentSelectedAnswer === j && currentCorrectAnswer !== currentSelectedAnswer,
+                'success': currentCorrectAnswer === j
+              }"
               (click)="submitAnswer(question, j)"
             >
               {{ answer.content }}
