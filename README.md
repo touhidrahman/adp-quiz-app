@@ -1,27 +1,21 @@
-# AdpQuizApp
+# ADP Quiz App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.9.
 
-## Development server
+## First Run
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Clone the repository
+- `cd` into the cloned directory
+- Run `npm install`.
+- Run `npm start`
+- Navigate to `http://localhost:4200/`
 
-## Code scaffolding
+## Subsequent Run
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`npm start`
 
-## Build
+## Notes
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+The provided `quiz.json` file was served via a mock server to mimic a real backend API instead of static file from the disk. The [json-server](https://github.com/typicode/json-server) library was used for this purpose. The `quiz.json` file was not modified.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+The `npm run start` command actually starts two localhost server on port 3000 and 4200 for backend and frontend respectively. So if you are using `ng start` to start the project (meaning the frontend only), be sure to start the backend server as well by using `npm start backend`.  

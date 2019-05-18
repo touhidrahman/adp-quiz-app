@@ -33,8 +33,8 @@ export class AppComponent implements OnInit {
   }
 
   get passed(): boolean {
-    const minAnsNeedToBeCorrect = Math.ceil(this.activeQuiz.questions.length / 2);
-    return this.score >= minAnsNeedToBeCorrect;
+    // if total number of questions is an odd number, use ceiling of the half
+    return this.score >= Math.ceil(this.activeQuiz.questions.length / 2);
   }
 
   constructor(private quizService: QuizService) { }
