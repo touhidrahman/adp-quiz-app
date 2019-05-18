@@ -32,6 +32,11 @@ export class AppComponent implements OnInit {
     return this.result.filter(it => !!it.wasCorrect).length
   }
 
+  get passed(): boolean {
+    const minAnsNeedToBeCorrect = Math.ceil(this.activeQuiz.questions.length / 2);
+    return this.score >= minAnsNeedToBeCorrect;
+  }
+
   constructor(private quizService: QuizService) { }
 
   ngOnInit(): void {
@@ -73,10 +78,22 @@ export class AppComponent implements OnInit {
         this.currentQuestion += 1;
       }
 
-      this.loading = false;
-      this.currentCorrectAnswer = -1;
-      this.currentSelectedAnswer = -1;
+      this.reset();
 
     }, this.QUESTION_CHANGE_DELAY);
+  }
+
+  startOver(): void {
+    this.reset();
+    this.activeQuiz = null;
+    this.result = [];
+    this.currentQuestion = 0;
+    this.currentStep = APP_STEPS.WELCOME;
+  }
+
+  private reset(): void {
+    this.loading = false;
+    this.currentCorrectAnswer = -1;
+    this.currentSelectedAnswer = -1;
   }
 }

@@ -22,6 +22,11 @@ h3 {
   font-size: 1.2em;
 }
 
+.display {
+  font-size: 8em;
+  margin: 0;
+}
+
 .selection {
   display: flex;
   flex-direction: column;
@@ -39,4 +44,10 @@ h3 {
 
 .score {
   text-align: right;
+}
+
+.result-reset {
+  display: flex;
+  align-self: center;
+  margin-top: 5rem;
 }

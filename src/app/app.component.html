@@ -16,7 +16,7 @@
 </section>
 
 <section
-  class="main quiz"
+  class="main"
   *ngIf="currentStep === APP_STEPS.QUIZ_ACTIVE"
 >
   <h2 class="score">Score: {{ score }}/{{ activeQuiz.questions.length }}</h2>
@@ -73,8 +73,18 @@
 </section>
 
 <section
-  class="main result"
+  class="main"
   *ngIf="currentStep === APP_STEPS.SHOW_SCORE"
 >
   <h1>Score</h1>
+  <h1 class="display">{{ passed ? '💪 Pass' : '💩 Fail' }}</h1>
+
+  <div class="result-reset">
+    <button
+      class="button"
+      (click)="startOver()"
+    >
+      Start Over
+    </button>
+  </div>
 </section>
