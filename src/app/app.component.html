@@ -1,11 +1,54 @@
-<div class="welcome">
-    <h1>Start</h1>
-    <div class="quiz-selection">
-        <div
-            class="quiz-select-button"
-            *ngFor="let quiz of quizzes"
-        >
-            <button class="button start-quiz-button">{{ quiz.title }}</button>
-        </div>
+<div
+  class="main welcome"
+  *ngIf="currentStep === APP_STEPS.WELCOME"
+>
+  <h1>Start</h1>
+  <div class="quiz-selection">
+    <div
+      class="quiz-selection__button"
+      *ngFor="let quiz of quizzes"
+    >
+      <button
+        class="button selection-button"
+        (click)="startQuiz(quiz)"
+      >
+        {{ quiz.title }}
+      </button>
     </div>
+  </div>
+</div>
+
+<div
+  class="main quiz"
+  *ngIf="currentStep === APP_STEPS.QUIZ_ACTIVE"
+>
+  <ng-container *ngFor="let question of activeQuiz.questions; let i = index">
+    <div
+      class="quiz-question"
+      [hidden]="currentQuestion !== i"
+    >
+      <h1>{{ question.question }}</h1>
+
+      <div class="quiz-question__answers">
+        <div
+          class="quiz-question__answers-button"
+          *ngFor="let answer of question.answers; let j = index"
+        >
+          <button
+            class="button selection-button"
+            (click)="submitAnswer(question, j)"
+          >
+            {{ answer.content }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div
+  class="main result"
+  *ngIf="currentStep === APP_STEPS.SHOW_SCORE"
+>
+  <h1>Score</h1>
 </div>

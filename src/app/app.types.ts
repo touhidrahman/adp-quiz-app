@@ -5,5 +5,5 @@ export interface Quiz {
 
 export interface Question {
   question: string;
-  answers: Array<{ content: string; value: boolean }>;
+  answers: Array<{ content: string, value: boolean }>;
 }
