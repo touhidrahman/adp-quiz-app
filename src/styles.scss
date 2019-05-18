@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+button.button {
+  box-shadow: inset 0px 1px 0px 0px #cf866c;
+  background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0451b', endColorstr='#bc3315',GradientType=0);
+  background-color: #d0451b;
+  border-radius: 3px;
+  border: 1px solid #942911;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 28px;
+  padding: 18px 56px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #854629;
+}
+
+button.button:hover {
+  background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bc3315', endColorstr='#d0451b',GradientType=0);
+  background-color: #bc3315;
+}
+
+button.button:active {
+  position: relative;
+  top: 1px;
+}
