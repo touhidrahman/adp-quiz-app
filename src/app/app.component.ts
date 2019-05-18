@@ -17,10 +17,11 @@ export class AppComponent implements OnInit {
   APP_STEPS = APP_STEPS;
 
   title = 'ADP Quiz App';
-  QUESTION_CHANGE_DELAY = 0; // ms
+  QUESTION_CHANGE_DELAY = 2000; // ms
 
   currentQuestion = 0;
   currentStep = APP_STEPS.WELCOME;
+  loading = false;
   activeQuiz: Quiz;
   quizzes: Array<Quiz>;
   result: Array<{ question: Question, wasCorrect: boolean }> = [];
@@ -41,7 +42,9 @@ export class AppComponent implements OnInit {
   }
 
   submitAnswer(question: Question, index: number): void {
-    // user's choosen answer
+    this.loading = true;
+
+    // user's choosen answer, value says correct or not
     const wasCorrect = question.answers[index].value;
 
     this.result.push({
@@ -57,6 +60,8 @@ export class AppComponent implements OnInit {
         // otherwise show next question after timeout
         this.currentQuestion += 1;
       }
+
+      this.loading = false;
     }, this.QUESTION_CHANGE_DELAY);
   }
 }
